@@ -1,25 +1,31 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to Weekplan
-  </h1>
+	<h1>
+		Welcome to Weekplan
+	</h1>
 </div>
-<h1>Basic</h1>
-<div cdkDrag class="basic">
-  I'm Draggable
-  <div cdkDragHandle class="handler"></div>
+<div class="board">
+	<div class="column">
+		<h3>New</h3>
+		<div cdkDrop #tasks="cdkDrop" [cdkDropData]="tasksItems" [cdkDropConnectedTo]="[mondayFirst, mondaySecond]" (cdkDropDropped)="dropped($event)" (cdkDropEntered)="entered($event)" (cdkDropExited)="exited($event)">
+			<div *ngFor="let item of tasksItems" [cdkDragData]="item" cdkDrag>
+				New item: {{ item }}
+				<div *cdkDragPreview>{{ item }}</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="column weekdays">
+		<h3>Montag</h3>
+		<div cdkDrop #mondayFirst="cdkDrop" [cdkDropData]="mondayItems.first" [cdkDropConnectedTo]="[mondaySecond, tasks]" (cdkDropDropped)="dropped($event)" [cdkDropEnterPredication]="specialUseCase">
+			<div *ngFor="let item of mondayItems.first" cdkDrag [cdkDragData]="item"> {{ item }}</div>
+		</div>
+		<div cdkDrop #mondaySecond="cdkDrop" [cdkDropData]="mondayItems.second" [cdkDropConnectedTo]="[mondayFirst, tasks]" (cdkDropDropped)="dropped($event)" [cdkDropEnterPredication]="specialUseCase">
+			<div *ngFor="let item of mondayItems.second" cdkDrag [cdkDragData]="item"> {{ item }}</div>
+		</div>
+	</div>
+
 </div>
-
-<h1>Sorting</h1>
-
-<cdk-drop (dropped)="onDrop($event)" class="list-sorted">
-  <div *ngFor="let item of items" cdkDrag class="list-sorted__item">
-    {{item}}
-  </div>
-</cdk-drop>
-
-<p>{{items | json}}</p>
-
 
 <!-- <div #dragRoot class="alternate-root" style="width: 200px; height: 200px; background: hotpink">
   <div cdkDrag cdkDragRootElement=".alternate-root" #dragElement style="width: 100px; height: 100px; background: red;"></div>
