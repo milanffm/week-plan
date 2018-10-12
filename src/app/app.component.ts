@@ -2,17 +2,21 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragEnter,
     CdkDragExit, CdkDragStart, CdkDrop, CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 
+import * as moment from 'moment';
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit {
     DATA = 'data';
-    public yourDate: Date = new Date();
+    public currentDate: Date = new Date();
+
     data = {
         tasksItems: [],
         weekOne: {
+            week: moment(this.currentDate).week(),
             mondayItems: [],
             tuesdayItems: [],
             wednesdayItems: [],
@@ -22,6 +26,7 @@ export class AppComponent implements AfterViewInit {
             sundayItems: []
         },
         weekTwo: {
+            week: moment(this.currentDate).week() + 1,
             mondayItems: [],
             tuesdayItems: [],
             wednesdayItems: [],
@@ -31,6 +36,7 @@ export class AppComponent implements AfterViewInit {
             sundayItems: []
         },
         weekThree: {
+            week: moment(this.currentDate).week() + 2,
             mondayItems: [],
             tuesdayItems: [],
             wednesdayItems: [],
@@ -42,19 +48,43 @@ export class AppComponent implements AfterViewInit {
         trashItems: [],
     };
 
-    constructor() {
+    constructor(
+    ) {
         if (this.getFromLocalStorage()) {
             this.data = JSON.parse(this.getFromLocalStorage());
         }
     }
 
-    ngAfterViewInit() {}
+    ngOnInit() {
+        this.initData();
+        console.log(moment(this.currentDate).week());
+    }
+
+    initData() {
+       // if (this.data.weekOne.week < moment(this.currentDate).week()) {
+       //     this.data.weekThree = this.data.weekTwo;
+       //     this.data.weekTwo = this.data.weekOne;
+       //     this.data.tasksItems.push(this.data.weekOne.mondayItems, this.data.weekOne.tuesdayItems, this.data.weekOne.wednesdayItems, this.data.weekOne.thursdayItems, this.data.weekOne.fridayItems,  this.data.weekOne.saturdayItems, this.data.weekOne.sundayItems);
+       //     this.data.weekOne = {
+       //         week: moment(this.currentDate).week(),
+       //         mondayItems: [],
+       //         tuesdayItems: [],
+       //         wednesdayItems: [],
+       //         thursdayItems: [],
+       //         fridayItems: [],
+       //         saturdayItems: [],
+       //         sundayItems: []
+       //     };
+       // }
+       // this.saveToLocalStorage();
+    }
 
     addItem(todo: string, color: string) {
         if (!todo) {
             return;
         }
         this.data.tasksItems.push({ title: todo, color: color});
+        // this.data.weekOne.week = 40;
         this.saveToLocalStorage();
     }
 

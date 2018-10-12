@@ -16,7 +16,11 @@
 	font-size: $font-size;
 	margin-bottom: 10px;
 }
-
+h3 {
+	span {
+		font-size: 10px;
+	}
+}
 .column {
 	flex: 1;
 }

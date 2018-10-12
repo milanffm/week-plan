@@ -7,3 +7,4 @@ export class WeekPipe implements PipeTransform {
         return moment(value).week();
     }
 }
+

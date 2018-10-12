@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<p>Woche:<br>
-			{{ yourDate | week }}</p>
+			{{ currentDate | week }}</p>
 
 
 	</div>
@@ -43,7 +43,7 @@
 	<div class="board">
 
 		<div class="column weekdays">
-			<h3>MO</h3>
+			<h3>MO <span>W {{ currentDate | week }}</span></h3>
 			<div cdkDrop #w1mo="cdkDrop" [cdkDropData]="data.weekOne.mondayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
 				<div *ngFor="let item of data.weekOne.mondayItems" class="item {{item.color}}" cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
 			</div>
@@ -88,7 +88,7 @@
 	<div class="board">
 
 		<div class="column weekdays">
-			<h3>MO</h3>
+			<h3>MO <span>W {{(currentDate | week) + 1 }}</span></h3>
 			<div cdkDrop #w2mo="cdkDrop" [cdkDropData]="data.weekTwo.mondayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
 				<div *ngFor="let item of data.weekTwo.mondayItems" class="item {{item.color}}" cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
 			</div>
@@ -133,7 +133,7 @@
 	<div class="board">
 
 		<div class="column weekdays">
-			<h3>MO</h3>
+			<h3>MO  <span>W {{(currentDate | week) + 2 }}</span></h3>
 			<div cdkDrop #w3mo="cdkDrop" [cdkDropData]="data.weekThree.mondayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
 				<div *ngFor="let item of data.weekThree.mondayItems" class="item {{item.color}}" cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
 			</div>
