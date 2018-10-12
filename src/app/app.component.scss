@@ -1,5 +1,7 @@
 @import "src/include.scss";
-
+.page {
+	padding: 3px;
+}
 .tasks {
 	width: 15%;
 	@include position(fixed, 0 null null 0);
@@ -10,7 +12,6 @@
 	display: flex;
 	margin-left: 15%;
 	font-size: $font-size;
-	padding: 5px 3px;
 }
 
 .column {
@@ -56,8 +57,8 @@ cdk-drop {
 	background: #eb0000;
 	text-align: center;
 	position: fixed;
-	bottom: 0;
-	left: 0;
+	bottom: 3px;
+	left: 3px;
 	z-index: 5;
 }
 
