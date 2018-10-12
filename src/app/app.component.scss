@@ -1,6 +1,21 @@
+.tasks {
+	width: 100px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding: 3px;
+}
+
+.form-group {
+	input {
+		width: 100px;
+		border-radius: 5px;
+	}
+}
+
 .board {
-	min-height: 100vh;
 	display: flex;
+	margin-left: 100px;
 }
 
 .column {
@@ -9,12 +24,17 @@
 
 cdk-drop {
 	display: block;
-	min-height: 100vh;
+}
+
+.todo {
+	min-height: 50px;
+	background: #ff00ff;
 }
 
 .weekdays > div {
-	background: #ccc;
-	height: 50px;
+	background: #fefe;
+	border: 1px solid #eee;
+	min-height: 50px;
 }
 
 .cdk-drop-dragging .cdk-drag {

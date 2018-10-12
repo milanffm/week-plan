@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragEnter,
     CdkDragExit, CdkDragStart, CdkDrop, CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 
@@ -7,23 +7,57 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragEnter,
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-    tasksItems = [
-        'Item 0',
-        'Item 1',
-        'Item 2',
-        'Item 3',
-    ];
-    mondayItems = {
-        first: ['item monday'],
-        second: ['second'],
+export class AppComponent implements AfterViewInit {
+    DATA = 'data';
+    data = {
+        tasksItems: [
+            {title: 'item 0'},
+            {title: 'item 1'},
+            {title: 'item 2'},
+            {title: 'item 3'},
+        ],
+        weekOne: {
+            mondayItems: [],
+            tuesdayItems: [],
+            wednesdayItems: [],
+            thursdayItems: [],
+            fridayItems: [],
+            saturdayItems: [],
+            sundayItems: []
+        },
+        weekTwo: {
+            mondayItems: [],
+            tuesdayItems: [],
+            wednesdayItems: [],
+            thursdayItems: [],
+            fridayItems: [],
+            saturdayItems: [],
+            sundayItems: []
+        },
+        weekThree: {
+            mondayItems: [],
+            tuesdayItems: [],
+            wednesdayItems: [],
+            thursdayItems: [],
+            fridayItems: [],
+            saturdayItems: [],
+            sundayItems: []
+        }
     };
-    tuesdayItems = [];
-    wednesdayItems = [];
-    thursdayItems = [];
-    fridayItems = [];
-    saturdayItems = [];
-    sundayItems = [];
+
+    constructor(){
+        if (this.getFromLocalStorage()) {
+            this.data = JSON.parse(this.getFromLocalStorage());
+        }
+    }
+
+    ngAfterViewInit() {}
+
+    addItem(todo: string) {
+        this.data.tasksItems.push({ title: todo});
+        this.saveToLocalStorage();
+    }
+
 
     dropped(event: CdkDragDrop<string[]>) {
         console.log(event);
@@ -44,10 +78,11 @@ export class AppComponent {
                 event.previousIndex,
                 event.currentIndex
             );
+            this.saveToLocalStorage();
         }
     }
 
-        entered(event: CdkDragEnter<string[]>) {
+    entered(event: CdkDragEnter<string[]>) {
         console.log('Entered', event.item.data);
     }
 
@@ -55,20 +90,11 @@ export class AppComponent {
         console.log('Exited', event.item.data);
     }
 
-    specialUseCase( drag?: CdkDrag, drop?: CdkDrop) {
+    saveToLocalStorage(){
+        return localStorage.setItem(this.DATA, JSON.stringify(this.data));
+    }
 
-        console.log(drop);
-        if (drop.data.length < 1) {
-            console.log('Cant drop you because there arent enough items in Active');
-            return false;
-        }
-
-        // const allowedItems = ['Item 5', 'Item 6', 'Item 7', 'Item 2'];
-        // if (allowedItems.indexOf(drag.data) === -1) {
-        //    console.log('Cant drop you because only Item 2, 5, 6 and 7 are allowed here');
-        //    return false;
-        // }
-
-        return true;
+    getFromLocalStorage(){
+        return localStorage.getItem(this.DATA);
     }
 }
