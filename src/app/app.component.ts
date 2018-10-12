@@ -9,6 +9,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragEnter,
 })
 export class AppComponent implements AfterViewInit {
     DATA = 'data';
+    public yourDate: Date = new Date();
     data = {
         tasksItems: [],
         weekOne: {
