@@ -1,21 +1,16 @@
-.tasks {
-	width: 100px;
-	position: fixed;
-	left: 0;
-	top: 0;
-	padding: 3px;
-}
+@import "src/include.scss";
 
-.form-group {
-	input {
-		width: 100px;
-		border-radius: 5px;
-	}
+.tasks {
+	width: 15%;
+	@include position(fixed, 0 null null 0);
+	padding: 3px;
 }
 
 .board {
 	display: flex;
-	margin-left: 100px;
+	margin-left: 15%;
+	font-size: $font-size;
+	padding: 5px 3px;
 }
 
 .column {
@@ -28,26 +23,70 @@ cdk-drop {
 
 .todo {
 	min-height: 50px;
-	background: #ff00ff;
+	background: #eee;
+	padding: 3px;
 }
+
+.item {
+	padding: 3px;
+	font-size: $font-size;
+	color: #ffffff;
+	margin-bottom: 3px;
+}
+
+.red {
+	background-color: $red;
+}
+.yellow {
+	background-color: $yellow;
+}
+.green {
+	background-color: $green;
+}
+.blue {
+	background-color: $blue;
+}
+.pink {
+	background-color: $pink;
+}
+
+.trash {
+	width: 20px;
+	height: 20px;
+	background: #eb0000;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 5;
+}
+
 
 .weekdays > div {
-	background: #fefe;
-	border: 1px solid #eee;
+	background: #efefef;
+	border: 1px solid #cccc;
 	min-height: 50px;
+	padding: 3px;
 }
 
+.cd {
+	font-size: $font-size;
+	padding: 5px 3px;
+}
+
+
 .cdk-drop-dragging .cdk-drag {
-	transition: transform 500ms cubic-bezier(0, 0, 0.2, 1);
+	// transition: transform 500ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .cdk-drag-animating {
-	transition: transform 550ms cubic-bezier(0, 0, 0.2, 1);
+	//transition: transform 550ms cubic-bezier(0, 0, 0.2, 1);
 
 }
 
 .cdk-drag-placeholder {
-	opacity: 0;
+	background: #ccc;
+	color: #ccc;
 }
 
 * {

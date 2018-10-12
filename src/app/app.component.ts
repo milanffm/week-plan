@@ -10,12 +10,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragEnter,
 export class AppComponent implements AfterViewInit {
     DATA = 'data';
     data = {
-        tasksItems: [
-            {title: 'item 0'},
-            {title: 'item 1'},
-            {title: 'item 2'},
-            {title: 'item 3'},
-        ],
+        tasksItems: [],
         weekOne: {
             mondayItems: [],
             tuesdayItems: [],
@@ -42,10 +37,11 @@ export class AppComponent implements AfterViewInit {
             fridayItems: [],
             saturdayItems: [],
             sundayItems: []
-        }
+        },
+        trashItems: [],
     };
 
-    constructor(){
+    constructor() {
         if (this.getFromLocalStorage()) {
             this.data = JSON.parse(this.getFromLocalStorage());
         }
@@ -53,8 +49,11 @@ export class AppComponent implements AfterViewInit {
 
     ngAfterViewInit() {}
 
-    addItem(todo: string) {
-        this.data.tasksItems.push({ title: todo});
+    addItem(todo: string, color: string) {
+        if (!todo) {
+            return;
+        }
+        this.data.tasksItems.push({ title: todo, color: color});
         this.saveToLocalStorage();
     }
 
@@ -90,7 +89,8 @@ export class AppComponent implements AfterViewInit {
         console.log('Exited', event.item.data);
     }
 
-    saveToLocalStorage(){
+    saveToLocalStorage() {
+        this.data.trashItems = [];
         return localStorage.setItem(this.DATA, JSON.stringify(this.data));
     }
 

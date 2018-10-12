@@ -1,0 +1,61 @@
+/*
+ * Application global variables.
+*/
+
+$gray-dark:                 #3c3c3c;
+$gray:                      #555;
+$gray-light:                #f3f4f5;
+$white:                     #fff;
+
+$brand-primary:             #722ebf;
+$red:                       #eb5f39;
+$yellow:                    #cab81d;
+$green:                     #5beb2e;
+$blue:                      #3783eb;
+$pink:                      #d542eb;
+
+/**
+* DIMENSIONS
+ */
+
+/**
+* FONTS
+ */
+
+
+$base-font-family: 'Roboto', sans-serif;
+
+$font-size: 12px;
+
+/**
+* ANIMATIONS
+ */
+
+$base-transition: all .5s ease-out;
+$translate-transition: translate .5s ease-out;
+
+
+/**
+* NEAT
+ */
+
+$custom-grid-10: (
+	columns: 10,
+	gutter: 0,
+);
+
+$custom-grid--no-margin: (
+   columns: 12,
+   gutter: 0,
+);
+
+$custom-grid--1-margin: (
+	columns: 12,
+	gutter: 1px
+);
+
+$custom-grid--70-margin: (
+   columns: 12,
+   gutter: 68px
+);
+
