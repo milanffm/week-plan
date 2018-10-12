@@ -33,6 +33,8 @@
 				<div *cdkDragPreview>{{ item.title }}</div>
 			</div>
 		</div>
+
+
 	</div>
 
 
@@ -81,17 +83,17 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="trash">
-		<div cdkDrop #trash="cdkDrop" [cdkDropData]="data.trashItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su]" (cdkDropDropped)="dropped($event)" >
-			X
-			<div *ngFor="let item of data.trashItems"  cdkDrag [cdkDragData]="item"></div>
-		</div>
-	</div>
 	<!-- <div #dragRoot class="alternate-root" style="width: 200px; height: 200px; background: hotpink">
 	  <div cdkDrag cdkDragRootElement=".alternate-root" #dragElement style="width: 100px; height: 100px; background: red;"></div>
 	</div> -->
 
+</div>
+
+<div class="trash">
+	<div cdkDrop #trash="cdkDrop" [cdkDropData]="data.trashItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su]" (cdkDropDropped)="dropped($event)" >
+		X
+		<div *ngFor="let item of data.trashItems"  cdkDrag [cdkDragData]="item"></div>
+	</div>
 </div>
 
 
