@@ -3,27 +3,32 @@
 */
 
 $gray-dark:                 #3c3c3c;
-$gray:                      #555;
-$gray-light:                #f3f4f5;
+$gray:                      #878787;
+$gray-light:                #f0f0f0;
 $white:                     #fff;
 
-$brand-primary:             #722ebf;
-$red:                       #eb5f39;
-$yellow:                    #cab81d;
-$green:                     #5beb2e;
-$blue:                      #3783eb;
-$pink:                      #d542eb;
+$brand-primary:             #0592d0;
+$red:                       #f5928c;
+$yellow:                    #fef598;
+$green:                     #daf4c1;
+$blue:                      #9bd3ec;
+$purple:                    #debae6;
+$orange:                    #ffd298;
 
 /**
 * DIMENSIONS
  */
+
+$headline-height:           30px;
+$headline-top-padding:      10px;
 
 /**
 * FONTS
  */
 
 
-$base-font-family: 'Roboto', sans-serif;
+$base-font-family: 'Arvo Regular', sans-serif;
+$headings-font-family: 'Arvo Bold', sans-serif;
 
 $font-size: 12px;
 

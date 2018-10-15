@@ -1,11 +1,13 @@
 
-
+@import "fonts";
 @import "forms";
 
 * {
 	-moz-hyphens: auto;
 	hyphens: auto;
 }
+
+
 
 body {
 	//font-family: open-sans, Arial, Helvetica, SansSerif;
@@ -17,10 +19,9 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
-	text-transform: uppercase;
+	font-family: $headings-font-family;
 	font-size: $font-size;
 	margin-top: 0;
-	font-weight: 900;
 	color: $gray;
 }
 

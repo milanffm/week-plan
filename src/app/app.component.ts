@@ -11,6 +11,7 @@ import * as moment from 'moment';
 })
 export class AppComponent implements OnInit {
     DATA = 'data';
+    selectedColor = 'yellow';
     public currentDate: Date = new Date();
 
     data = {
@@ -127,5 +128,9 @@ export class AppComponent implements OnInit {
 
     getFromLocalStorage(){
         return localStorage.getItem(this.DATA);
+    }
+
+    onSelectChange($event){
+        this.selectedColor = $event.target.value;
     }
 }

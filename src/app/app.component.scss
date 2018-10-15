@@ -1,32 +1,87 @@
 @import "src/include.scss";
 .page {
-	padding: 3px;
 }
 .tasks {
-	width: 15%;
+	width: 14%;
 	@include position(fixed, 0 null null 0);
-	padding: 3px;
+	@include padding(0 3px 3px 3px);
 	height: 100vh;
 	overflow: auto;
 }
 
+.trash {
+	@include position(fixed, null null 3px 14%);
+	width: 4%;
+	height: 40px;
+	background: url("/assets/img/trash-bottom.png") no-repeat;
+	background-size: contain;
+	background-position: top;
+	text-align: center;
+	z-index: 5;
+	.cdk-drop {
+		width: 100%;
+		height: 100%;
+	}
+	&:before {
+		content: '';
+		height: 10px;
+		width: 100%;
+		@include position(absolute, -16% 0 null null);
+		background: url("/assets/img/trash-top.png") no-repeat center;
+		background-size: contain;
+		@include new-transition()
+	}
+
+	&.cdk-drop-dragging {
+		
+	}
+
+	.cdk-drag-placeholder {
+		background: none;
+		color: transparent;
+	}
+
+}
+
 .board {
 	display: flex;
-	margin-left: 15%;
+	margin-left: 18%;
 	font-size: $font-size;
-	margin-bottom: 10px;
+	height: 33.3vh;
 }
 h3 {
-	span {
-		font-size: 10px;
-	}
+	@include position(absolute, 0 null null 0);
+	width: 100%;
+	height: $headline-height;
+	background: #fff;
+	padding-top: $headline-top-padding;
+	margin: 0;
+	text-align: center;
 }
 .column {
 	flex: 1;
+	background: $gray-light;
+	height: 100%;
+	position: relative;
+}
+
+.weekdays > div {
+	height: 100%;
+	@include padding($headline-height 1px 1px 1px);
+	border-right: 3px solid #fff;
+	border-bottom: 3px solid #fff;
+	overflow: auto;
+	padding-right: 5px;
 }
 
 cdk-drop {
 	display: block;
+}
+
+h4 {
+	padding-top: $headline-top-padding;
+	margin: 0;
+	height: $headline-height;
 }
 
 .todo {
@@ -36,10 +91,11 @@ cdk-drop {
 }
 
 .item {
-	padding: 3px;
+	padding: 5px 3px;
+	text-align: center;
 	font-size: $font-size;
-	color: #ffffff;
 	margin-bottom: 3px;
+	border-radius: 5px;
 }
 
 .red {
@@ -54,26 +110,14 @@ cdk-drop {
 .blue {
 	background-color: $blue;
 }
-.pink {
-	background-color: $pink;
+.purple {
+	background-color: $purple;
 }
-
-.trash {
-	@include position(fixed, null 3px 3px null);
-	width: 20px;
-	height: 20px;
-	background: #eb0000;
-	text-align: center;
-	z-index: 5;
+.orange {
+	background-color: $orange;
 }
 
 
-.weekdays > div {
-	background: #efefef;
-	border: 1px solid #cccc;
-	min-height: 50px;
-	padding: 3px;
-}
 
 .cd {
 	font-size: $font-size;
@@ -93,11 +137,6 @@ cdk-drop {
 .cdk-drag-placeholder {
 	background: #ccc;
 	color: #ccc;
-}
-
-* {
-	font-family: 'Roboto', sans-serif;
-	box-sizing: border-box;
 }
 
 
