@@ -162,6 +162,10 @@ h4 {
 		padding: 10px 5px;
 	}
 
+	.trash .cdk-drop {
+		@include new-transform(translateX(14px));
+	}
+
 }
 
 

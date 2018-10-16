@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="page">
-	<div class="tasks">
+	<div class="tasks" (keyup.enter)="addItem(todoitem.value, todocolor.value)" >
 		<h4>Neu</h4>
-		<div class="form-group">
+		<div class="form-group" >
 			<input #todoitem class="form-control" >
 		</div>
 		<div class="form-group">

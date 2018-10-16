@@ -2,6 +2,11 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragEnter,
     CdkDragExit, CdkDragStart, CdkDrop, CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 
+import { Plugins } from '@capacitor/core';
+
+const { Keyboard } = Plugins;
+const { Device } = Plugins;
+
 
 
 import * as moment from 'moment';
@@ -83,8 +88,12 @@ export class AppComponent implements OnInit {
        // this.saveToLocalStorage();
     }
 
-    addItem(todo: string, color: string) {
-        console.log('CLICK');
+    public async addItem(todo: string, color: string) {
+        const info =  await Device.getInfo();
+        if (info.platform === !'web') {
+            Keyboard.hide();
+        }
+        console.log('CLICK', info.platform);
         if (!todo) {
             return;
         }
