@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
 
     public async addItem(todo: string, color: string) {
         const info =  await Device.getInfo();
-        if (info.platform === !'web') {
+        if (info.platform === 'android' && info.platform === 'ios') {
             Keyboard.hide();
         }
         console.log('CLICK', info.platform);
