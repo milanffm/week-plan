@@ -5,12 +5,12 @@
 .tasks {
 	width: 16%;
 	@include position(fixed, 0 null null 0);
-	@include padding(0 3% 3px 3px);
+	@include padding(3px 3% 3px 3px);
 	height: 100vh;
 	overflow: auto;
 }
 
-.trash {
+.trash .cdk-drop {
 	@include position(fixed, null null 3px 13%);
 	width: 3%;
 	height: 29px;
@@ -19,6 +19,7 @@
 	background-position: top;
 	text-align: center;
 	z-index: 5;
+	@include new-transition();
 	.cdk-drop {
 		width: 100%;
 		height: 100%;
@@ -30,11 +31,18 @@
 		@include position(absolute, -16% 0 null null);
 		background: url("/assets/img/trash-top.png") no-repeat center;
 		background-size: contain;
-		@include new-transition()
+		@include new-transition();
 	}
 
 	&.cdk-drop-dragging {
-
+		height: 40px;
+		width: 5%;
+		left: 12%;
+		&:before {
+			top: -35%;
+			right: -2px;
+			@include new-transform(rotate(45deg));
+		}
 	}
 
 	.cdk-drag-placeholder {
@@ -48,6 +56,7 @@
 	display: flex;
 	margin-left: 16%;
 	font-size: $font-size;
+	padding: 5px 3px;
 }
 h3 {
 	@include position(absolute, 0 null null 0);
@@ -67,7 +76,7 @@ h3 {
 
 .weekdays > div {
 	height: 100%;
-	@include padding($headline-height + 3 5px 1px 1px);
+	@include padding($headline-height + 3 1px 1px 1px);
 	border-right: 3px solid #fff;
 	border-bottom: 3px solid #fff;
 	overflow: auto;
@@ -138,6 +147,21 @@ h4 {
 .cdk-drag-placeholder {
 	background: #ccc;
 	color: #ccc;
+}
+@media all and (min-width: 760px) {
+
+	.tasks, .board {
+		padding: 15px;
+	}
+
+	.weekdays > div {
+		@include padding($headline-height + 5 5px 5px 5px);
+	}
+
+	.item {
+		padding: 10px 5px;
+	}
+
 }
 
 
