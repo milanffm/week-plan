@@ -16,6 +16,9 @@ body {
 	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background: url("/assets/img/bg.png");
+	background-size: 20%;
+	@include new-hyphens();
 }
 
 h1, h2, h3, h4, h5 {

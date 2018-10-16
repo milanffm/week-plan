@@ -2,6 +2,8 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragEnter,
     CdkDragExit, CdkDragStart, CdkDrop, CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 
+
+
 import * as moment from 'moment';
 
 @Component({
@@ -10,6 +12,7 @@ import * as moment from 'moment';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
     DATA = 'data';
     selectedColor = 'yellow';
     public currentDate: Date = new Date();
@@ -81,6 +84,7 @@ export class AppComponent implements OnInit {
     }
 
     addItem(todo: string, color: string) {
+        console.log('CLICK');
         if (!todo) {
             return;
         }

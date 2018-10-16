@@ -3,7 +3,7 @@
 	<div class="tasks">
 		<h4>Neu</h4>
 		<div class="form-group">
-			<input #todoitem class="form-control">
+			<input #todoitem class="form-control" >
 		</div>
 		<div class="form-group">
 			<select #todocolor [class]="selectedColor" (change)="onSelectChange($event)"  class="form-control">
@@ -17,7 +17,7 @@
 			</select>
 		</div>
 		<div>
-			<button (click)="addItem(todoitem.value, todocolor.value)" class="btn  btn-primary">
+			<button (click)="addItem(todoitem.value, todocolor.value)"  class="btn  btn-primary">
 				Erstellen
 			</button>
 		</div>

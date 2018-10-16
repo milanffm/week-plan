@@ -1,18 +1,19 @@
 @import "src/include.scss";
 .page {
+
 }
 .tasks {
-	width: 14%;
+	width: 16%;
 	@include position(fixed, 0 null null 0);
-	@include padding(0 3px 3px 3px);
+	@include padding(0 3% 3px 3px);
 	height: 100vh;
 	overflow: auto;
 }
 
 .trash {
-	@include position(fixed, null null 3px 14%);
-	width: 4%;
-	height: 40px;
+	@include position(fixed, null null 3px 13%);
+	width: 3%;
+	height: 29px;
 	background: url("/assets/img/trash-bottom.png") no-repeat;
 	background-size: contain;
 	background-position: top;
@@ -33,7 +34,7 @@
 	}
 
 	&.cdk-drop-dragging {
-		
+
 	}
 
 	.cdk-drag-placeholder {
@@ -45,33 +46,33 @@
 
 .board {
 	display: flex;
-	margin-left: 18%;
+	margin-left: 16%;
 	font-size: $font-size;
-	height: 33.3vh;
 }
 h3 {
 	@include position(absolute, 0 null null 0);
 	width: 100%;
 	height: $headline-height;
-	background: #fff;
+	background:rgba(255,255,255,0.5);
 	padding-top: $headline-top-padding;
 	margin: 0;
 	text-align: center;
 }
 .column {
 	flex: 1;
-	background: $gray-light;
+	background: rgba(0,0,0,0.05);
 	height: 100%;
 	position: relative;
 }
 
 .weekdays > div {
 	height: 100%;
-	@include padding($headline-height 1px 1px 1px);
+	@include padding($headline-height + 3 5px 1px 1px);
 	border-right: 3px solid #fff;
 	border-bottom: 3px solid #fff;
 	overflow: auto;
 	padding-right: 5px;
+	min-height: 63px;
 }
 
 cdk-drop {
@@ -86,7 +87,7 @@ h4 {
 
 .todo {
 	min-height: 50px;
-	background: #eee;
+	background: rgba(0,0,0,0.1);
 	padding: 3px;
 }
 
