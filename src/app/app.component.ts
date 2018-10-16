@@ -7,8 +7,6 @@ import { Plugins } from '@capacitor/core';
 const { Keyboard } = Plugins;
 const { Device } = Plugins;
 
-
-
 import * as moment from 'moment';
 
 @Component({

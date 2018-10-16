@@ -66,6 +66,10 @@ h3 {
 	padding-top: $headline-top-padding;
 	margin: 0;
 	text-align: center;
+	span {
+		font-size: 8px;
+		padding-left: 2px;
+	}
 }
 .column {
 	flex: 1;
@@ -164,6 +168,13 @@ h4 {
 
 	.trash .cdk-drop {
 		@include new-transform(translateX(14px));
+	}
+
+	h3 {
+		span {
+			font-size: $font-size;
+			padding-left: 5px;
+		}
 	}
 
 }
