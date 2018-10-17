@@ -124,6 +124,10 @@ export class AppComponent implements OnInit {
         }
     }
 
+    equalHeight(){
+
+    }
+
     entered(event: CdkDragEnter<string[]>) {
         console.log('Entered', event.item.data);
     }
