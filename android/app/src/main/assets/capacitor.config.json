@@ -1,0 +1,6 @@
+{
+  "appId": "de.graphicon.weekplan",
+  "appName": "weekplan",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}

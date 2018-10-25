@@ -1,20 +1,183 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="page">
+
+	<div class="trash">
+		<div cdkDrop #trash="cdkDrop" [cdkDropData]="data.trashItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+			<div *ngFor="let item of data.trashItems"  cdkDrag [cdkDragData]="item"></div>
+		</div>
+	</div>
+
+
+	<div class="board">
+
+		<div class="column weekdays">
+			<h3>Mo <span>W {{ currentDate | week }}</span></h3>
+			<div cdkDrop #w1mo="cdkDrop" [cdkDropData]="data.weekOne.mondayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekOne.mondayItems" class="item {{item.color}}" cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>Di</h3>
+			<div cdkDrop #w1tu="cdkDrop" [cdkDropData]="data.weekOne.tuesdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekOne.tuesdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>Mi</h3>
+			<div cdkDrop #w1we="cdkDrop" [cdkDropData]="data.weekOne.wednesdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekOne.wednesdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>Do</h3>
+			<div cdkDrop #w1th="cdkDrop" [cdkDropData]="data.weekOne.thursdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekOne.thursdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>Fr</h3>
+			<div cdkDrop #w1fr="cdkDrop" [cdkDropData]="data.weekOne.fridayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekOne.fridayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>Sa</h3>
+			<div cdkDrop #w1sa="cdkDrop" [cdkDropData]="data.weekOne.saturdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekOne.saturdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>So</h3>
+			<div cdkDrop #w1su="cdkDrop" [cdkDropData]="data.weekOne.sundayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekOne.sundayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+	</div>
+	<div class="board">
+
+		<div class="column weekdays">
+			<h3>Mo <span>W {{(currentDate | week) + 1 }}</span></h3>
+			<div cdkDrop #w2mo="cdkDrop" [cdkDropData]="data.weekTwo.mondayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekTwo.mondayItems" class="item {{item.color}}" cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>Di</h3>
+			<div cdkDrop #w2tu="cdkDrop" [cdkDropData]="data.weekTwo.tuesdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekTwo.tuesdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>Mi</h3>
+			<div cdkDrop #w2we="cdkDrop" [cdkDropData]="data.weekTwo.wednesdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekTwo.wednesdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>Do</h3>
+			<div cdkDrop #w2th="cdkDrop" [cdkDropData]="data.weekTwo.thursdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekTwo.thursdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>Fr</h3>
+			<div cdkDrop #w2fr="cdkDrop" [cdkDropData]="data.weekTwo.fridayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekTwo.fridayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>Sa</h3>
+			<div cdkDrop #w2sa="cdkDrop" [cdkDropData]="data.weekTwo.saturdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekTwo.saturdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>So</h3>
+			<div cdkDrop #w2su="cdkDrop" [cdkDropData]="data.weekTwo.sundayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekTwo.sundayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+	</div>
+	<div class="board">
+
+		<div class="column weekdays">
+			<h3>MO  <span>W {{(currentDate | week) + 2 }}</span></h3>
+			<div cdkDrop #w3mo="cdkDrop" [cdkDropData]="data.weekThree.mondayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekThree.mondayItems" class="item {{item.color}}" cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>DI</h3>
+			<div cdkDrop #w3tu="cdkDrop" [cdkDropData]="data.weekThree.tuesdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekThree.tuesdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>MI</h3>
+			<div cdkDrop #w3we="cdkDrop" [cdkDropData]="data.weekThree.wednesdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekThree.wednesdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>DO</h3>
+			<div cdkDrop #w3th="cdkDrop" [cdkDropData]="data.weekThree.thursdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekThree.thursdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>FR</h3>
+			<div cdkDrop #w3fr="cdkDrop" [cdkDropData]="data.weekThree.fridayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekThree.fridayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>SA</h3>
+			<div cdkDrop #w3sa="cdkDrop" [cdkDropData]="data.weekThree.saturdayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekThree.saturdayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+		<div class="column weekdays">
+			<h3>SO</h3>
+			<div cdkDrop #w3su="cdkDrop" [cdkDropData]="data.weekThree.sundayItems" [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]" (cdkDropDropped)="dropped($event)" >
+				<div *ngFor="let item of data.weekThree.sundayItems" class="item {{item.color}}"   cdkDrag [cdkDragData]="item"> {{ item.title }}</div>
+			</div>
+		</div>
+	</div>
+	<div class="tasks" (keyup.enter)="addItem(todoitem.value, todocolor.value)" >
+		<h4>Neu</h4>
+		<div class="form-group" >
+			<input #todoitem class="form-control" >
+		</div>
+		<div class="form-group">
+			<select #todocolor [class]="selectedColor" (change)="onSelectChange($event)"  class="form-control">
+				<option selected value="yellow">Gelb</option>
+				<option value="blue">Blau</option>
+				<option value="purple">Lila</option>
+				<option value="green">Grün</option>
+				<option value="red">Rot</option>
+				<option value="orange">Orange</option>
+
+			</select>
+		</div>
+		<div>
+			<button (click)="addItem(todoitem.value, todocolor.value)"  class="btn  btn-primary">
+				Erstellen
+			</button>
+		</div>
+		<div cdkDrop #tasks="cdkDrop" class="todo" [cdkDropData]="data.tasksItems"
+		     [cdkDropConnectedTo]="[tasks, w1mo, w1tu, w1we, w1th, w1fr, w1sa, w1su, w2mo, w2tu, w2we, w2th, w2fr, w2sa, w2su, w3mo, w3tu, w3we, w3th, w3fr, w3sa, w3su, trash]"
+		     (cdkDropDropped)="dropped($event)"
+		     (cdkDropEntered)="entered($event)"
+		     (cdkDropExited)="exited($event)">
+			<div *ngFor="let item of data.tasksItems"  class="item {{item.color}}" [cdkDragData]="item" cdkDrag>
+				{{ item.title }}
+			</div>
+		</div>
+	</div>
+	<!-- <div #dragRoot class="alternate-root" style="width: 200px; height: 200px; background: hotpink">
+	  <div cdkDrag cdkDragRootElement=".alternate-root" #dragElement style="width: 100px; height: 100px; background: red;"></div>
+	</div> -->
+
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
 

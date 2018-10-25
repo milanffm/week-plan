@@ -1,0 +1,214 @@
+@import "src/include.scss";
+.page {
+
+}
+.tasks {
+	width: 16%;
+	@include position(fixed, 0 null null 0);
+	@include padding(3px 3% 3px 3px);
+	height: 100vh;
+	border-right: 3px solid #fff;
+	overflow: auto;
+}
+
+.trash .cdk-drop {
+	@include position(fixed, null null 3px 13%);
+	width: 3%;
+	height: 29px;
+	background: url("/assets/img/trash-bottom.png") no-repeat;
+	background-size: contain;
+	background-position: top;
+	text-align: center;
+	z-index: 5;
+	@include new-transition();
+	.cdk-drop {
+		width: 100%;
+		height: 100%;
+	}
+	&:before {
+		content: '';
+		height: 10px;
+		width: 100%;
+		@include position(absolute, -16% 0 null null);
+		background: url("/assets/img/trash-top.png") no-repeat center;
+		background-size: contain;
+		@include new-transition();
+	}
+
+	&.cdk-drop-dragging {
+		height: 40px;
+		width: 5%;
+		left: 12%;
+		&:before {
+			top: -35%;
+			right: -2px;
+			@include new-transform(rotate(45deg));
+		}
+	}
+
+	.cdk-drag-placeholder {
+		background: none;
+		color: transparent;
+	}
+
+}
+
+.board {
+	display: flex;
+	margin-left: 16%;
+	font-size: $font-size;
+	margin-bottom: 5px;
+}
+h3 {
+	@include position(absolute, 0 null null 0);
+	width: 100%;
+	height: $headline-height;
+	background:rgba(255,255,255,0.5);
+	padding-top: $headline-top-padding;
+	margin: 0;
+	text-align: center;
+	span {
+		font-size: 8px;
+		padding-left: 2px;
+	}
+}
+.column {
+	flex: 1;
+	background: $gray-light;
+	height: 100%;
+	position: relative;
+}
+
+.weekdays > div {
+	height: 100%;
+	@include padding($headline-height + 3 1px 1px 1px);
+	border-right: 3px solid #fff;
+	border-bottom: 3px solid #fff;
+	overflow: auto;
+	padding-right: 5px;
+	min-height: 63px;
+}
+
+cdk-drop {
+	display: block;
+}
+
+h4 {
+	padding-top: $headline-top-padding;
+	margin: 0;
+	height: $headline-height;
+}
+
+.todo {
+	min-height: 50px;
+	background: $gray-light;
+	padding: 3px;
+}
+
+.item {
+	padding: 5px 3px;
+	text-align: center;
+	font-size: $font-size;
+	margin-bottom: 3px;
+	border-radius: 5px;
+}
+
+.red {
+	background-color: $red;
+}
+.yellow {
+	background-color: $yellow;
+}
+.green {
+	background-color: $green;
+}
+.blue {
+	background-color: $blue;
+}
+.purple {
+	background-color: $purple;
+}
+.orange {
+	background-color: $orange;
+}
+
+
+
+.cd {
+	font-size: $font-size;
+	padding: 5px 3px;
+}
+
+
+.cdk-drop-dragging .cdk-drag {
+	// transition: transform 500ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-animating {
+	//transition: transform 550ms cubic-bezier(0, 0, 0.2, 1);
+
+}
+
+.cdk-drag-placeholder {
+	background: #ccc;
+	color: #ccc;
+}
+@media all and (min-width: 760px) {
+
+
+	.tasks {
+		margin-top: 15px;
+	}
+
+	.item {
+		padding: 10px 5px;
+	}
+
+	.trash .cdk-drop {
+		@include new-transform(translateX(14px));
+	}
+
+	h3 {
+		span {
+			font-size: $font-size;
+		}
+	}
+
+}
+
+@media all and (max-width: 520px) {
+	.board {
+		margin: 0;
+		width: 100%;
+	}
+	.tasks {
+		position: relative;
+		width: 100%;
+		padding: 10px;
+		padding-top: 0;
+		margin: 0 auto;
+		max-width: 300px;
+		h4 {
+			display: none;
+		}
+	}
+
+	.trash .cdk-drop {
+		left: 10px;
+		width: 20px;
+	}
+
+	h3 span{
+		display: none;
+	}
+
+}
+
+@media all and (max-width: 350px) {
+	.tasks {
+		margin: 0 35px;
+		width: auto;
+	}
+}
+
+

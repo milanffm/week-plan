@@ -1,0 +1,67 @@
+/*
+ * Application global variables.
+*/
+
+$gray-dark:                 #3c3c3c;
+$gray:                      #878787;
+$gray-light:                #f0f0f0;
+$gray-light2:               #e3e3e3;
+$white:                     #fff;
+
+$brand-primary:             #0592d0;
+$red:                       #f5928c;
+$yellow:                    #fef598;
+$green:                     #daf4c1;
+$blue:                      #9bd3ec;
+$purple:                    #debae6;
+$orange:                    #ffd298;
+
+/**
+* DIMENSIONS
+ */
+
+$headline-height:           30px;
+$headline-top-padding:      10px;
+
+/**
+* FONTS
+ */
+
+
+$base-font-family: 'Arvo Regular', sans-serif;
+$headings-font-family: 'Arvo Bold', sans-serif;
+
+$font-size: 12px;
+
+/**
+* ANIMATIONS
+ */
+
+$base-transition: all .5s ease-out;
+$translate-transition: translate .5s ease-out;
+
+
+/**
+* NEAT
+ */
+
+$custom-grid-10: (
+	columns: 10,
+	gutter: 0,
+);
+
+$custom-grid--no-margin: (
+   columns: 12,
+   gutter: 0,
+);
+
+$custom-grid--1-margin: (
+	columns: 12,
+	gutter: 1px
+);
+
+$custom-grid--70-margin: (
+   columns: 12,
+   gutter: 68px
+);
+

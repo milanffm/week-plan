@@ -1,0 +1,16 @@
+@mixin new-transition($transitionvalues:$base-transition) {
+	@include prefixer(transition, $transitionvalues, webkit moz ms o spec);
+}
+
+@mixin new-transform($property) {
+	@include prefixer(transform, $property, webkit moz ms o spec);
+}
+
+@mixin background-opacity($color: $brand-primary, $opacity: 0.3) {
+	background: $color; /* The Fallback */
+	background: rgba($color, $opacity);
+}
+
+@mixin new-hyphens() {
+	@include prefixer(hyphens, auto, webkit moz ms spec)
+}

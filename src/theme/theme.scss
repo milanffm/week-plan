@@ -1,0 +1,40 @@
+
+@import "fonts";
+@import "forms";
+
+* {
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+
+
+
+body {
+	//font-family: open-sans, Arial, Helvetica, SansSerif;
+	font-family: $base-font-family;
+	color: $gray;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-size: 20%;
+	@include new-hyphens();
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: $headings-font-family;
+	font-size: $font-size;
+	margin-top: 0;
+	color: $gray;
+}
+
+p, li {
+	font-size: $font-size;
+}
+
+
+@media all and (min-width: 760px) {
+
+	body {
+		padding: 15px 0;
+	}
+}
