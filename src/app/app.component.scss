@@ -176,4 +176,39 @@ h4 {
 
 }
 
+@media all and (max-width: 520px) {
+	.board {
+		margin: 0;
+		width: 100%;
+	}
+	.tasks {
+		position: relative;
+		width: 100%;
+		padding: 10px;
+		padding-top: 0;
+		margin: 0 auto;
+		max-width: 300px;
+		h4 {
+			display: none;
+		}
+	}
+
+	.trash .cdk-drop {
+		left: 10px;
+		width: 20px;
+	}
+
+	h3 span{
+		display: none;
+	}
+
+}
+
+@media all and (max-width: 350px) {
+	.tasks {
+		margin: 0 35px;
+		width: auto;
+	}
+}
+
 
